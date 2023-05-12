@@ -1,10 +1,9 @@
-class MovableObject extends DrawableObjects {
+class MovableObject extends DrawableObject {
     speed = 0.15;
     otherDirection = false;
     speedY = 0;
     acceleration = 2.5;
-    energy =  100;
-
+    energy = 100;
     lastHit = 0;
 
     applyGravity() {
@@ -17,29 +16,23 @@ class MovableObject extends DrawableObjects {
     }
 
     isAboveGround() {
-        return this.y < 350;
-    }
-
-    drawFrame(ctx) {
-        if(this instanceof Character || this instanceof Chicken) {
-            ctx.beginPath();
-            ctx.lineWidth = "5";
-            ctx.strokeStyle = "blue";
-            ctx.rect(this.x, this.y, this.width, this.heigth);
-            ctx.stroke();
+        if (this instanceof ThrowableObject) {
+            return true;
+        } else {
+            return this.y < 180;
         }
     }
 
     isColliding(mo) {
-        return this.x + this.width > mo.x && 
-            this.y + this.heigth > mo.y &&
+        return this.x + this.width > mo.x &&
+            this.y + this.height > mo.y &&
             this.x < mo.x &&
-            this.y < mo.y + mo.heigth;
+            this.y < mo.y + mo.height;
     }
 
     hit() {
         this.energy -= 5;
-        if(this.energy < 0) {
+        if (this.energy < 0) {
             this.energy = 0;
         } else {
             this.lastHit = new Date().getTime();
@@ -47,13 +40,17 @@ class MovableObject extends DrawableObjects {
     }
 
     isHurt() {
-        let timePassed = new Date().getTime() - this.lastHit;
-        timePassed = timePassed / 1000;
-        return timePassed < 1;
+        let timepassed = new Date().getTime() - this.lastHit;
+        timepassed = timepassed / 1000;
+        return timepassed < 1;
     }
 
     isDead() {
         return this.energy == 0;
+    }
+
+    kill() {
+        this.energy = 0;
     }
 
     playAnimation(images) {
