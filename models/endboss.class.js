@@ -12,9 +12,19 @@ class EndBoss extends MovableObject{
         'img/4.Secuencias_Enemy_gigantón-Doña_Gallinota-/2.Ateción-ataque/1.Alerta/G11.png',
         'img/4.Secuencias_Enemy_gigantón-Doña_Gallinota-/2.Ateción-ataque/1.Alerta/G12.png'
     ];
+
+    IMAGES_DEAD = [
+        'img/4.Secuencias_Enemy_gigantón-Doña_Gallinota-/4.Muerte/G24.png',
+        'img/4.Secuencias_Enemy_gigantón-Doña_Gallinota-/4.Muerte/G25.png',
+        'img/4.Secuencias_Enemy_gigantón-Doña_Gallinota-/4.Muerte/G26.png'
+    ];
+    
+    dead_sound = new Audio('audio/chicken.mp3');
+
     constructor(){
         super().loadImage(this.IMAGES_WALKING[0]);
         this.loadImages(this.IMAGES_WALKING);
+        this.loadImages(this.IMAGES_DEAD);
         this.x = 2500;
         this.speed = 10;
         this.animate();
@@ -22,7 +32,14 @@ class EndBoss extends MovableObject{
 
     animate() {
         setInterval(() => {
-            this.playAnimation(this.IMAGES_WALKING);
+            this.dead_sound.pause();
+            if (this.isDead()) {
+                this.playAnimation(this.IMAGES_DEAD);
+                this.dead_sound.play();
+                showEndScreen();
+            } else {
+                this.playAnimation(this.IMAGES_WALKING);
+            }
         }, 200);
     }
 }

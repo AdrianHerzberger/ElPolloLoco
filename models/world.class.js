@@ -77,11 +77,11 @@ class World {
             });
         }
 
-        this.checkCollisionsWithCollectibles(this.level.coins);
-        this.checkCollisionsWithCollectibles(this.level.bottles);
+        this.checkCollisionsWithObjects(this.level.coins);
+        this.checkCollisionsWithObjects(this.level.bottles);
     }
 
-    checkCollisionsWithCollectibles(array) {
+    checkCollisionsWithObjects(array) {
         if (array) {
             array.forEach((element, index) => {
                 if (this.character.isColliding(element)) {

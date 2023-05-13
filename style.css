@@ -1,13 +1,49 @@
+@font-face {
+    font-family: Monoton;
+    src: url('../img/7.Marcadores/Boogaloo (fuente usada en la muestra descargada de Google fonts)/Boogaloo-Regular.ttf') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
 body {
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
+    text-align: center;
+    flex-direction: column;
+    min-height: 100vh;
     margin: 0;
+    background-image: url('../img/9.Intro _ Outro Image/Start Screen/2756388.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.start-button {
+    width: 500px;
+    height: 60px;
+    text-align: center;
+	display: inline-block;
+	margin:5px;
+    font-weight: bold;
+    padding: 10px 0 10px 10px ;
+    background-color: #FFC600;
+    text-shadow: -1px -1px black, 1px 1px #221b01;
+    color: #5f4d0c;
+    -webkit-border-radius: 7px;
+	-moz-border-radius: 7px;
+	-o-border-radius: 7px;
+	border-radius: 7px;
+    box-shadow: 0 .2em #5f4d0c; 
+    cursor: pointer;
 }
 
 canvas {
     background-color: black;
-    display: block;
+}
+
+.heading {
+    font-family: Monoton;
+    color: #473606;
 }
 
 /* Smartphones ----------- */

@@ -45,9 +45,6 @@ window.addEventListener('keyup', (event) => {
         keyboard.SPACE = false;
     }
     if(event.keyCode == 70) {
-        keyboard.SPACE = false;
-    }
-    if(event.keyCode == 70) {
         keyboard.THROW = false;
     }
 });
