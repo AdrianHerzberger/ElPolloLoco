@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<html translate="no">
+<html translate="off">
 
 <head>
     <meta charset="UTF-8">
@@ -8,7 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="img/7.Marcadores/Icono/sombrero-g4122c3172_1280.png" type="image/png">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <title>El Pollo Loco</title>
     <script src="models/keyinput.class.js"></script>
     <script src="models/drawable-objects.class.js"></script>
@@ -35,6 +36,7 @@
     <div id="startScreen" class="start-screen" style="display: block;">
         <h1 class="heading">El Pollo Loco</h1>
         <button class="start-button" onclick="startGame()">Start Game</button>
+        <div class="rotate-info heading"><h2>Please rotate your screen!</h2></div>
     </div>
     <div id="game" style="display: none;">
         <canvas id="canvas" width="1250px" height="680px"></canvas>
@@ -54,12 +56,12 @@
             <div class="inputs-right">
                 <div class="input-button arrow-jump">
                     <span class="material-symbols-outlined">
-                        arrow_drop_up
+                        space_bar
                     </span>
                 </div>
                 <div class="input-button arrow-throw">
-                    <span class="material-symbols-outlined">
-                        switch_access_shortcut
+                    <span class="button-f">
+                        F
                     </span>
                 </div>
             </div>

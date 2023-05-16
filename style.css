@@ -101,6 +101,7 @@ body {
 
 .material-symbols-outlined {
     font-size: 44px !important;
+    color: #221b01;
 }
 
 canvas {
@@ -112,10 +113,64 @@ canvas {
     color: #473606;
 }
 
+.rotate-info {
+    display: none;
+}
+
+.button-f {
+    font-family: Monoton;
+    font-size: 32px !important;
+    color: #221b01;
+} 
+
 /* Smartphones ----------- */
 @media only screen and (max-width: 720px) {
     canvas {
         width: 100%;
+    }
+    .rotate-info {
+        display: block;
+    }
+
+    .input-bar {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        position: relative;
+        bottom: 0px;
+        padding: 0 50px;
+    }
+
+    .input-button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 50px;
+        height: 50px;
+        background: #A0220A;
+        border-radius: 50%;
+        border: 1px solid black;
+    }
+
+    .restart-button {
+        position: relative;
+        top: 376px;
+        width: 500px;
+        height: 60px;
+        text-align: center;
+        display: inline-block;
+        margin:5px;
+        font-weight: bold;
+        padding: 10px 0 10px 10px ;
+        background-color: #FFC600;
+        text-shadow: -1px -1px black, 1px 1px #221b01;
+        color: #5f4d0c;
+        -webkit-border-radius: 7px;
+        -moz-border-radius: 7px;
+        -o-border-radius: 7px;
+        border-radius: 7px;
+        box-shadow: 0 .2em #5f4d0c; 
+        cursor: pointer;
     }
 }
 
@@ -124,9 +179,73 @@ canvas {
     canvas {
         height: 100vh;
     }
-}
 
-/* #title{
- position: absolute;
- top: 0;
-} */
+    .rotate-info {
+        display: block;
+    }
+
+    .input-bar {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        position: relative;
+        bottom: 45px;
+        padding: 0 50px;
+    }
+
+    .input-button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 35px;
+        height: 35px;
+        background: #A0220A;
+        border-radius: 50%;
+        border: 1px solid black;
+    }
+
+    .material-symbols-outlined {
+        font-size: 32px !important;
+        color: #221b01;
+    }
+    
+    .button-f {
+        font-family: Monoton;
+        font-size: 24px !important;
+        color: #221b01;
+    } 
+
+    .end-screen img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .restart-button {
+        position: relative;
+        top: 148px;
+        width: 500px;
+        height: 60px;
+        text-align: center;
+        display: inline-block;
+        margin:5px;
+        font-weight: bold;
+        padding: 10px 0 10px 10px ;
+        background-color: #FFC600;
+        text-shadow: -1px -1px black, 1px 1px #221b01;
+        color: #5f4d0c;
+        -webkit-border-radius: 7px;
+        -moz-border-radius: 7px;
+        -o-border-radius: 7px;
+        border-radius: 7px;
+        box-shadow: 0 .2em #5f4d0c; 
+        cursor: pointer;
+        z-index: 10;
+    }
+}
