@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<html translate="no">
 
 <head>
     <meta charset="UTF-8">
@@ -7,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="img/7.Marcadores/Icono/sombrero-g4122c3172_1280.png" type="image/png">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <title>El Pollo Loco</title>
     <script src="models/keyinput.class.js"></script>
     <script src="models/drawable-objects.class.js"></script>
@@ -32,11 +34,41 @@
 <body>
     <div id="startScreen" class="start-screen" style="display: block;">
         <h1 class="heading">El Pollo Loco</h1>
-        <button class="start-button" onclick="startGame()">Start Game</button>   
+        <button class="start-button" onclick="startGame()">Start Game</button>
     </div>
-    <canvas id="canvas" width="1250px" height="680px" style="display: none;"></canvas>
-    <div id="end-screen" class="end-screen" style="display: none;">
-        <h1>Ende!</h1>
+    <div id="game" style="display: none;">
+        <canvas id="canvas" width="1250px" height="680px"></canvas>
+        <div class="input-bar">
+            <div class="inputs-left">
+                <div class="input-button arrow-left">
+                    <span class="material-symbols-outlined">
+                        arrow_left
+                    </span>
+                </div>
+                <div class="input-button arrow-right">
+                    <span class="material-symbols-outlined">
+                        arrow_right
+                    </span>
+                </div>
+            </div>
+            <div class="inputs-right">
+                <div class="input-button arrow-jump">
+                    <span class="material-symbols-outlined">
+                        arrow_drop_up
+                    </span>
+                </div>
+                <div class="input-button arrow-throw">
+                    <span class="material-symbols-outlined">
+                        switch_access_shortcut
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="endScreen" class="end-screen" style="display: none;">
+        <button class="restart-button" onclick="restartGame()">Restart Game</button>
+        <img src="img/9.Intro _ Outro Image/_Game over_ screen/3.Game over.png" alt="#">
     </div>
 </body>
+
 </html>

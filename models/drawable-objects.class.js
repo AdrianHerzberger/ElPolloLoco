@@ -5,21 +5,10 @@ class DrawableObject {
     imageCache = {};
     currentImage = 0;
     distance = 1;
-    amount = 0;
 
     loadImage(path) {
         this.img = new Image();
         this.img.src = path;
-    }
-
-    collideWith() {
-        this.amount += 1;
-        console.log(this.amount);
-        if (this.amount < 0) {
-            this.amount = 0;
-        } else {
-            this.amount = new Date().getTime();
-        }
     }
 
     draw(ctx) {
@@ -27,7 +16,7 @@ class DrawableObject {
     }
 
     drawFrame(ctx) {
-        if (this instanceof Character || this instanceof Chicken || this instanceof BottlesToCollect) {
+        if (this instanceof Character || this instanceof Chicken || this instanceof BottlesToCollect || this instanceof EndBoss) {
             ctx.beginPath();
             ctx.lineWidth = '5';
             ctx.strokeStyle = 'blue';

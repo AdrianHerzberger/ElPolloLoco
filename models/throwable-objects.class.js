@@ -8,7 +8,6 @@ class ThrowableObject extends MovableObject {
 
     throwing = false;
     throwing_sound = new Audio('audio/throw.mp3');
-    soundPlaying = false;
 
     constructor(x, y) {
         super().loadImage('img/7.Marcadores/Icono/Botella.png');
@@ -31,14 +30,14 @@ class ThrowableObject extends MovableObject {
 
     animate() {
         this.throwing_sound.pause();
-        setInterval(() => {
+        let throwingInterval = setInterval(() => {
             if (this.throwing = true) {
-                this.soundPlaying = true;
                 this.playAnimation(this.IMAGE_ROTATION_BOTTLE);
                 this.throwing_sound.play();
-                this.throwing_sound.onended = () => {
-                    this.soundPlaying = false;
-                };
+                setTimeout(() => {
+                    this.throwing_sound.volume = 0;
+                    clearInterval(throwingInterval);
+                }, 1000);
             }
         }, 100);
     }

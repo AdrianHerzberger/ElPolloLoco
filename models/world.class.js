@@ -7,9 +7,10 @@ class World {
     throwableObjects = [];
     character = new Character();
     statusBar = new StatusBar();
-    statusBottle = new BottlesBar();
+    statusBottles = new BottlesBar();
     statusCoins = new CoinsBar();
     clearRect =  new BackgroundObject('img/5.Fondo/Capas/5.cielo_1920-1080px.png', 0);
+    canThrow = true;
     
     constructor(canvas, keyboard) {
         this.ctx = canvas.getContext('2d');
@@ -26,61 +27,69 @@ class World {
 
     run() {
         setInterval(() => {
-            this.checkCollisions();
+            this.checkCollisionsEnemys();
+            this.checkCollisionsBottles();
+            this.checkCollisionsCoins();
             this.checkThrowObjects();
         }, 200);
     }
 
     checkThrowObjects() {
         if (this.keyboard.THROW) {
-            let bottle = new ThrowableObject(this.character.x + 100, this.character.y + 100);
-            this.throwableObjects.push(bottle);
+            if (this.canThrow && this.character.collectedBottels > 0) {
+                this.canThrow = false;
+                let bottle = new ThrowableObject(this.character.x + 100, this.character.y + 100);
+                this.throwableObjects.push(bottle);  
+                setTimeout(()=> {
+                    this.canThrow = true;
+                }, 1000);
+            }
         }
-        this.throwableObjects.forEach( throwableObject =>{
-            this.level.enemies.forEach( enemy =>{
-                if(!enemy.isDead()){
-                    if(throwableObject.isColliding(enemy)){
+    
+        this.throwableObjects.forEach((throwableObject) => {
+            this.level.enemies.forEach((enemy) => {
+                if (!enemy.isDead()) {
+                    if (throwableObject.isColliding(enemy)) {
                         enemy.kill();
-                        setTimeout(()=>{
+                        setTimeout(() => {
                             let position = this.level.enemies.indexOf(enemy);
                             this.level.enemies.splice(position, 1);
                         }, 2000);
                     }
                 }
             });
-        } );
+        });
     }
-
-    checkCollisions() {
+    
+    checkCollisionsEnemys() {
         this.level.enemies.forEach((enemy) => {
             if (this.character.isColliding(enemy)) {
                 this.character.hit();
                 this.statusBar.setPercentage(this.character.energy);
             }
         });
-        
-        if (this.level.character) {
-            this.level.character.forEach((bottles) => {
-                if (this.character.isColliding(bottles)) {
-                    this.character.collideWith();
-                    this.statusBottle.setBottles(this.character.amount);
-                }
-            });
-        }
-
-        if (this.level.character) {
-            this.level.character.forEach((coin) => {
-                if (this.character.isColliding(coin)) {
-                    this.character.collideWith();
-                    this.statusCoins.setCoins(this.character.amount);
-                }
-            });
-        }
-
-        this.checkCollisionsWithObjects(this.level.coins);
+    }
+    
+    checkCollisionsBottles() {
+        this.level.bottles.forEach((bottle) => {
+            if (this.character.isColliding(bottle)) {
+                this.character.collectedBottels++;
+                this.statusBottles.setBottles(this.character.collectedBottels);
+            }
+        });
         this.checkCollisionsWithObjects(this.level.bottles);
     }
 
+    checkCollisionsCoins() {
+        this.level.coins.forEach((coin) => {
+            if (this.character.isColliding(coin)) {
+                this.character.collideWithCoin();
+                this.statusCoins.setCoins(this.character.coin);
+            }
+        });
+        this.checkCollisionsWithObjects(this.level.coins);
+    }
+    
     checkCollisionsWithObjects(array) {
         if (array) {
             array.forEach((element, index) => {
@@ -107,7 +116,7 @@ class World {
         this.ctx.translate(-this.camera_x, 0);
 
         this.addToMap(this.statusBar);
-        this.addToMap(this.statusBottle);
+        this.addToMap(this.statusBottles);
         this.addToMap(this.statusCoins);
         
         let self = this;

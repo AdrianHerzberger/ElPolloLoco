@@ -6,6 +6,9 @@ class MovableObject extends DrawableObject {
     energy = 100;
     lastHit = 0;
 
+    coin = 0
+    lastCoin = 0;
+
     applyGravity() {
         setInterval(() => {
             if (this.isAboveGround() || this.speedY > 0) {
@@ -28,6 +31,15 @@ class MovableObject extends DrawableObject {
             this.y + this.height > mo.y &&
             this.x < mo.x &&
             this.y < mo.y + mo.height;
+    }
+
+    collideWithCoin() {
+        this.coin += 1;
+        if (this.coin < 0) {
+            this.coin = 0;
+        } else {
+            this.lastCoin = new Date().getTime();
+        }
     }
 
     hit() {

@@ -20,25 +20,23 @@ class CoinsBar extends DrawableObject {
 
     setCoins(coins) {
         this.coins = coins;
-        let path = this.IMAGES_COINS[this.resolveImageIndex()];
+        let path = this.IMAGES_COINS[this.resolveImageIndexCoin()];
         this.img = this.imageCache[path];
     }
 
-    resolveImageIndex() {
+    resolveImageIndexCoin() {
         if (this.coins == 0) {
             return 0;
-        } else if (this.coins > 1) {
+        } else if (this.coins == 1) {
             return 1;
-        } else if (this.coins > 2) {
+        } else if (this.coins == 2) {
             return 2;
-        } else if (this.coins > 3) {
+        } else if (this.coins == 3) {
             return 3;
-        } else if (this.coins > 4) {
-            return 4;
-        }else if (this.coins > 5) {
+        } else if (this.coins == 4) {
             return 4;
         } else {
-            return 0;
+            return 5;
         }
     }
 }

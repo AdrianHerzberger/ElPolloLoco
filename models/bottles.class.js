@@ -1,4 +1,4 @@
-class BottlesToCollect extends MovableObject {
+class BottlesToCollect extends DrawableObject {
     width = 80;
     height = 80;
     y = 520 ;
@@ -11,6 +11,6 @@ class BottlesToCollect extends MovableObject {
     constructor() {
         super().loadImage(this.IMAGES_COLLECT_BOOTLES[0]);
         this.loadImages(this.IMAGES_COLLECT_BOOTLES);
-        this.x = 400 + Math.random() * 500;
+        this.x = 400 + Math.random() * 1000;
     }
 }

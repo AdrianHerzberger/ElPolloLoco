@@ -8,7 +8,7 @@ class CoinsToCollect extends MovableObject {
     constructor() {
         super().loadImage('img/8.Coin/Moneda1.png');
         this.loadImages(this.IMAGES_COINS);
-        this.x = 200 + Math.random() * 500;
+        this.x = 400 + Math.random() * 1000;
         this.y = 300 + Math.random() * 250;
         this.animate();
     }

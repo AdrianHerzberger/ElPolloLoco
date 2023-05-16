@@ -20,23 +20,23 @@ class BottlesBar extends DrawableObject {
 
     setBottles(bottles) {
         this.bottles = bottles;
-        let path = this.IMAGES_BOTTLES[this.resolveImageIndex()];
+        let path = this.IMAGES_BOTTLES[this.resolveImageIndexBottle()];
         this.img = this.imageCache[path];
     }
 
-    resolveImageIndex() {
+    resolveImageIndexBottle() {
         if (this.bottles == 0) {
             return 0;
-        } else if (this.bottles > 20) {
+        } else if (this.bottles == 1) {
             return 1;
-        } else if (this.bottles > 40) {
+        } else if (this.bottles == 2) {
             return 2;
-        } else if (this.bottles > 60) {
+        } else if (this.bottles == 3) {
             return 3;
-        } else if (this.bottles > 80) {
+        } else if (this.bottles == 4) {
             return 4;
         } else {
             return 5;
         }
     }
- }
+}
